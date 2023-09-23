@@ -1,0 +1,6 @@
+[submodule "sca_react"]
+	path = sca_react
+	url = https://github.com/spankyman125/sca_react
+[submodule "sca_nest"]
+	path = sca_nest
+	url = https://github.com/spankyman125/sca_nest
