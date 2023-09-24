@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  sca:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./public:/sca/public
+      - ./dev.db:/sca/prisma/dev.db
+      - ${PRIVATE_SSL_KEY}:/sca/secrets/privkey.pem
+      - ${PUBLIC_SSL_CERT}:/sca/secrets/fullchain.pem
+    ports:
+      - "${API_PORT}:443/tcp"
+      - "${MEDIASOUP_MIN_UDP_PORT}-${MEDIASOUP_MAX_UDP_PORT}:10000-10050/udp"
+    environment:
+      - MEDIASOUP_ANNOUNCED_IP=${MEDIASOUP_ANNOUNCED_IP}
