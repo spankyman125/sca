@@ -31,7 +31,3 @@ COPY --from=react-build /sca_react/dist/ frontend/
 COPY --from=mediasoup-worker-build mediasoup/node_modules/mediasoup/worker/out/Release/mediasoup-worker mediasoup/mediasoup-worker
 ENV MEDIASOUP_WORKER_BIN="mediasoup/mediasoup-worker"
 ENTRYPOINT [ "node", "dist/src/main" ]
-# Nest RestAPI port
-EXPOSE 443/tcp 
-# Mediasoup webrtc voice ports
-EXPOSE 10000-10050/udp
